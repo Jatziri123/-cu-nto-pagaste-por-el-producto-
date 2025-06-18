@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de Compras</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      padding: 20px;
+    }
+    .container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #resultado {
+      margin-top: 20px;
+      font-size: 18px;
+      text-align: center;
+      color: #007bff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Calculadora de Compras</h2>
+    <label for="producto">Producto:</label>
+    <input type="text" id="producto" placeholder="Ej. Manzanas">
+
+    <label for="precio">Precio por unidad ($):</label>
+    <input type="number" id="precio" placeholder="Ej. 10">
+
+    <label for="cantidad">Cantidad:</label>
+    <input type="number" id="cantidad" placeholder="Ej. 3">
+
+    <button onclick="calcularTotal()">Calcular Total</button>
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    function calcularTotal() {
+      const producto = document.getElementById("producto").value;
+      const precio = parseFloat(document.getElementById("precio").value);
+      const cantidad = parseInt(document.getElementById("cantidad").value);
+
+      if (producto && !isNaN(precio) && !isNaN(cantidad)) {
+        const total = precio * cantidad;
+        document.getElementById("resultado").textContent =
+          `Total a pagar por ${cantidad} ${producto}: $${total.toFixed(2)}`;
+      } else {
+        document.getElementById("resultado").textContent =
+          "Por favor llena todos los campos correctamente.";
+      }
+    }
+  </script>
+</body>
+</html>
